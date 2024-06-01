@@ -1,5 +1,6 @@
 package com.jsp.projecta1.dao;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +34,40 @@ public class AdminDao {
 //			id is present and optional is empty
 			return null;
 		}
+	}
+
+	public Admin findAdminById(int adminId) {
+		Optional<Admin> optional=repo.findById(adminId);
+		if(optional.isPresent()) {
+//			id is present
+			return optional.get();
+		}
+		return null;
+	}
+
+	public Admin deletetAdminById(int adminId) {
+		Optional<Admin> optional=repo.findById(adminId);
+		Admin admin=optional.get();
+		if(optional.isPresent()) {
+//			id is present and you can delete the data
+			repo.deleteById(adminId);
+			return optional.get();
+			
+		}
+		return null;
+	}
+
+	public Admin findAdminByEmail(String email) {
+		Optional<Admin> optional=repo.findByEmail(email);
+		if(optional.isPresent()) {
+//			that admin is present with that email
+			return optional.get();
+		}
+		return null;
+	}
+
+	public List<Admin> findAllAdmin() {
+		List<Admin> admins=repo.findAll();
+		return admins;
 	}
 }
