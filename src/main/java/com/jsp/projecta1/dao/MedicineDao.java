@@ -2,6 +2,7 @@ package com.jsp.projecta1.dao;
 
 import java.util.Optional;
 
+import org.apache.tomcat.util.openssl.openssl_h;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -43,6 +44,14 @@ public Medicine deleteMedicineById(int medicineId) {
 	Optional<Medicine> optional=repo.findById(medicineId);
 	if(optional.isPresent()) {
 		repo.deleteById(medicineId);
+		return optional.get();
+	}
+	return null;
+}
+
+public Medicine findByName(String medicineName) {
+	Optional<Medicine> optional=repo.findByName(medicineName);
+	if(optional.isPresent()) {
 		return optional.get();
 	}
 	return null;

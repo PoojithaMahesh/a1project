@@ -11,6 +11,7 @@ import com.jsp.projecta1.entity.MedicalStore;
 import com.jsp.projecta1.entity.Medicine;
 import com.jsp.projecta1.exception.MedicalStoreIdNotFoundException;
 import com.jsp.projecta1.exception.MedicineIdNotFoundException;
+import com.jsp.projecta1.exception.MedicineNameNotFoundException;
 import com.jsp.projecta1.util.ResponseStructure;
 
 @Service
@@ -76,6 +77,20 @@ public ResponseEntity<ResponseStructure<Medicine>> deleteMedicine(int medicineId
 		return new ResponseEntity<ResponseStructure<Medicine>>(structure,HttpStatus.FORBIDDEN);
 	}else {
 		throw new MedicineIdNotFoundException("Sorry failed to delete the medicine");
+	}
+}
+
+public ResponseEntity<ResponseStructure<Medicine>> findMedicineByName(String medicineName) {
+	Medicine dbMedicine=dao.findByName(medicineName);
+	if(dbMedicine!=null) {
+//		id is present and the data updated successfully
+		ResponseStructure<Medicine> structure=new ResponseStructure<>();
+		structure.setHttpStatus(HttpStatus.FOUND.value());
+		structure.setMessage("MEdicine fetched successfully");
+		structure.setData(dbMedicine);
+		return new ResponseEntity<ResponseStructure<Medicine>>(structure,HttpStatus.FOUND);
+	}else {
+		throw new MedicineNameNotFoundException("Sorry failed to fetch the medicine");
 	}
 }
 

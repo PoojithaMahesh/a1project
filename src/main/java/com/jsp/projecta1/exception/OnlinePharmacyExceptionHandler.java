@@ -27,6 +27,14 @@ public class OnlinePharmacyExceptionHandler extends ResponseEntityExceptionHandl
 		return new ResponseEntity<ResponseStructure<String>>(structure,HttpStatus.NOT_FOUND);
 	}
 	@ExceptionHandler
+	public ResponseEntity<ResponseStructure<String>> handleMedicineNameNotFoundException(MedicineNameNotFoundException exception){
+		ResponseStructure<String> structure=new ResponseStructure<String>();
+		structure.setMessage("Medicine Name IS NOT FOUND");
+		structure.setHttpStatus(HttpStatus.NOT_FOUND.value());
+		structure.setData(exception.getMessage());
+		return new ResponseEntity<ResponseStructure<String>>(structure,HttpStatus.NOT_FOUND);
+	}
+	@ExceptionHandler
 	public ResponseEntity<ResponseStructure<String>> handlestoreIdNotFoundException(MedicalStoreIdNotFoundException exception){
 		ResponseStructure<String> structure=new ResponseStructure<String>();
 		structure.setMessage("Store ID IS NOT FOUND");

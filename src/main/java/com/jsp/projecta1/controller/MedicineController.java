@@ -2,6 +2,7 @@ package com.jsp.projecta1.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -31,4 +32,22 @@ public ResponseEntity<ResponseStructure<Medicine>> updateMedicine(@RequestParam 
 public ResponseEntity<ResponseStructure<Medicine>> findMedicine(@RequestParam int medicineId){
 	return service.findMedicine(medicineId);
 }
+@DeleteMapping
+public ResponseEntity<ResponseStructure<Medicine>> deleteMedicine(@RequestParam int medicineId){
+	return service.deleteMedicine(medicineId);
+}
+@GetMapping("/findbyname")
+public ResponseEntity<ResponseStructure<Medicine>> findMedicineByName(@RequestParam String medicineName){
+	return service.findMedicineByName(medicineName);
+}
+
+
+
+
+
+
+
+
+
+
 }
