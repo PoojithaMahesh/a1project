@@ -1,5 +1,7 @@
 package com.jsp.projecta1.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,6 +26,7 @@ public class Address {
 	
 	@OneToOne
 	@JoinColumn
+	@JsonIgnore
 	private MedicalStore medicalStore;
 	
 	@ManyToOne

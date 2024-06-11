@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.jsp.projecta1.entity.Address;
 import com.jsp.projecta1.entity.MedicalStore;
 import com.jsp.projecta1.repo.MedicalStoreRepo;
 
@@ -42,6 +43,8 @@ public class MedicalStoreDao {
 	public MedicalStore deleteMedicalStore(int storeId) {
 		Optional<MedicalStore> optional=repo.findById(storeId);
 		if(optional.isPresent()) {
+			Address address=optional.get().getAddress();
+			address.setMedicalStore(null);
 			repo.delete(optional.get());
 			return optional.get();
 		}

@@ -38,6 +38,8 @@ public class MedicalStoreService {
 //				admin is also valid admin thenan save the data
 				medicalStore.setAdmin(dbAdmin);
 				MedicalStore dbMedicalStore=dao.saveMedicalStore(medicalStore);
+				dbAddress.setMedicalStore(medicalStore);
+				addressDao.updateAddress(addressId, dbAddress);
 				ResponseStructure<MedicalStore> structure=new ResponseStructure<>();
 				structure.setMessage("Data saved successfully");
 				structure.setHttpStatus(HttpStatus.CREATED.value());

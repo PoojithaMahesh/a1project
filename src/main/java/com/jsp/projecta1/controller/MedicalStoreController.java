@@ -28,15 +28,15 @@ public class MedicalStoreController {
 		return service.saveMedicalStore(addressId,adminId,medicalStore);
 	}
 	@PutMapping
-	public ResponseEntity<ResponseStructure<MedicalStore>> updateMedicalStore(@RequestBody int storeId,@RequestBody MedicalStore medicalStore){
+	public ResponseEntity<ResponseStructure<MedicalStore>> updateMedicalStore(@RequestParam int storeId,@RequestBody MedicalStore medicalStore){
 		return service.updateMedicalStore(storeId,medicalStore);
 	}
 	@GetMapping
-	public ResponseEntity<ResponseStructure<MedicalStore>> findMedicalStore(@RequestBody int storeId){
+	public ResponseEntity<ResponseStructure<MedicalStore>> findMedicalStore(@RequestParam int storeId){
 		return service.findMedicalStore(storeId);
 	}
 	@DeleteMapping
-	public ResponseEntity<ResponseStructure<MedicalStore>> deleteMedicalStore(@RequestBody int storeId){
+	public ResponseEntity<ResponseStructure<MedicalStore>> deleteMedicalStore(@RequestParam int storeId){
 		return service.deleteMedicalStore(storeId);
 	}
 }
