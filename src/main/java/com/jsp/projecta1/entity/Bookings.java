@@ -3,6 +3,8 @@ package com.jsp.projecta1.entity;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.jsp.projecta1.enums.BookingStatus;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,6 +26,7 @@ public class Bookings {
 	private int quantity;
 	private String paymentMode;
 	private LocalDate expectedDate;
+	private BookingStatus bookingStatus;
 	
 	
 	@ManyToMany
