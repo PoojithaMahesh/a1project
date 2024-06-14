@@ -14,4 +14,16 @@ private BookingRepo repo;
 public Bookings saveBooking(Bookings bookings) {
 	return repo.save(bookings);
 }
+
+public Bookings findBooking(int bookingId) {
+	if(repo.findById(bookingId).isPresent()) {
+		return repo.findById(bookingId).get();
+	}
+	return null;
+}
+
+public void deleteBooking(int bookingId) {
+	repo.deleteById(bookingId);
+	
+}
 }

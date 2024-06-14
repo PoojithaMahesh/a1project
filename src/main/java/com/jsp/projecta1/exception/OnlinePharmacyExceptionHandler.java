@@ -27,6 +27,38 @@ public class OnlinePharmacyExceptionHandler extends ResponseEntityExceptionHandl
 		return new ResponseEntity<ResponseStructure<String>>(structure,HttpStatus.NOT_FOUND);
 	}
 	@ExceptionHandler
+	public ResponseEntity<ResponseStructure<String>> handleBookingIdNotFoundException(BookingIdNotFoundException exception){
+		ResponseStructure<String> structure=new ResponseStructure<String>();
+		structure.setMessage("BOOKING ID IS NOT FOUND");
+		structure.setHttpStatus(HttpStatus.NOT_FOUND.value());
+		structure.setData(exception.getMessage());
+		return new ResponseEntity<ResponseStructure<String>>(structure,HttpStatus.NOT_FOUND);
+	}
+	@ExceptionHandler
+	public ResponseEntity<ResponseStructure<String>> handleBookingAlreadyCancelledException(BookingAlreadyCancelledException exception){
+		ResponseStructure<String> structure=new ResponseStructure<String>();
+		structure.setMessage("BOOKING ALREADY CANCELLED");
+		structure.setHttpStatus(HttpStatus.NOT_FOUND.value());
+		structure.setData(exception.getMessage());
+		return new ResponseEntity<ResponseStructure<String>>(structure,HttpStatus.NOT_FOUND);
+	}
+	@ExceptionHandler
+	public ResponseEntity<ResponseStructure<String>> handleBookingAlreadyDeliveredException(BookingAlreadyDeliveredException exception){
+		ResponseStructure<String> structure=new ResponseStructure<String>();
+		structure.setMessage("BOOKING ALREADY DELIVERED");
+		structure.setHttpStatus(HttpStatus.NOT_FOUND.value());
+		structure.setData(exception.getMessage());
+		return new ResponseEntity<ResponseStructure<String>>(structure,HttpStatus.NOT_FOUND);
+	}
+	@ExceptionHandler
+	public ResponseEntity<ResponseStructure<String>> handleBookingCantCancelNow(BookingCanCancelNow exception){
+		ResponseStructure<String> structure=new ResponseStructure<String>();
+		structure.setMessage("BOOKING CANT CANCEL NOW BECAUSE ITS ALREADY TIME");
+		structure.setHttpStatus(HttpStatus.NOT_FOUND.value());
+		structure.setData(exception.getMessage());
+		return new ResponseEntity<ResponseStructure<String>>(structure,HttpStatus.NOT_FOUND);
+	}
+	@ExceptionHandler
 	public ResponseEntity<ResponseStructure<String>> handlestaffIdNotFoundException(StaffIdNotFoundException exception){
 		ResponseStructure<String> structure=new ResponseStructure<String>();
 		structure.setMessage("STAFF ID IS NOT FOUND");
